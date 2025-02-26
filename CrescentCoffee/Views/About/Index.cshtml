@@ -1,6 +1,42 @@
-﻿
-<h3 class="my-5">
-	About
-</h3>
+﻿<partial name="_CarouselAbout" />
+<div class="about-section">
+    <h2 class="my-5 text-center">About</h2>
+    <div class="card" style="width:100%; margin-right: auto; margin-left: auto;">
+        <div class="container">
+            <p style="padding:10px; text-align:left">
+                Welcome to Crescent Coffee, your friendly neighborhood coffee truck! We’re here to bring you the best in hand-crafted, specialty coffee wherever you need it. Whether you’re starting your day, taking a break, or just need a moment to recharge, Crescent Coffee is ready to serve up a warm cup of joy.
+                <br><br>Our menu features a range of expertly brewed drinks, from rich espressos to creamy lattes, made with carefully sourced beans for that perfect taste in every cup. We’re passionate about not just the quality of our coffee but also creating a welcoming space for the community to gather, connect, and enjoy a great cup together.
+                <br><br>At Crescent Coffee, it's more than just about coffee – it’s about bringing people together, building relationships, and adding a little extra warmth to your day. Stop by, say hello, and experience the Crescent Coffee difference! We can’t wait to serve you..
+            </p>
+        </div>
+    </div>
+</div>
 
+<h2 style="text-align:center">Meet the Owner</h2>
+<div class="card" style="width:50%; margin-right: auto; margin-left: auto;">
+    <img src="/Images/Owner.jpg" alt="owner" style="width:75%; margin-right: auto; margin-left: auto; margin-top: auto; margin-bottom: auto;">
+    <div class="container">
+        <h2>Samantha Sedgmas</h2>
+        <p class="title">CEO & Founder</p>
+        <p>
+            Welcome to Crescent Coffee! I’m Samantha Sedgmas, the proud owner and barista behind this mobile coffee experience.
+            <br><br>My love for coffee began years ago when I discovered how a great cup could transform any day. After dreaming about it for years, I took the leap to bring Crescent Coffee to the streets – a coffee truck that’s all about not just great coffee, but also building community.
+            <br><br>At Crescent Coffee, we believe that coffee is more than just a drink; it’s an opportunity to connect. Our goal is to create a welcoming space where people can come together, whether they’re grabbing their morning brew or enjoying a moment of conversation with friends and neighbors. We serve a carefully curated menu of specialty drinks made from high-quality beans, and every cup is crafted with care and a personal touch.
+            <br><br>Thank you for being part of the Crescent Coffee community. I’m excited to share a cup with you and look forward to building connections, one coffee at a time!
+        </p>
+        <p>
+            <button class="button">
+                <a asp-controller="Contact" asp-action="Index" style="text-decoration: none">Contact</a>
+            </button>
+        </p>
+    </div>
+</div>
 
+<script>
+        $(document).ready(function() {
+        $('a[href=#top]').click(function(){
+            $('html, body').animate({scrollTop:0}, 'slow');
+            return false;
+        });
+    })
+</script>

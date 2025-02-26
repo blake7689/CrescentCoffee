@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CoffeeType>
+
+<li class="nav-item dropdown">
+	<a class="nav-link dropdown-toggle"
+	data-toggle="dropdown"
+	href="#"
+	role="button"
+	data-bs-toggle="dropdown"
+	id="nav-dropdown"
+	aria-expanded="false">
+		Shop
+	</a>
+	<ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+		<li>
+			<a asp-controller="Coffee" asp-action="CoffeeList" asp-route-CoffeeType="" class="dropdown-item">All Coffees</a>
+		</li>
+		@foreach (var coffeeType in Model)
+		{
+			<li>
+				<a asp-controller="Coffee" asp-action="CoffeeList" asp-route-coffeeType="@coffeeType.Type" class="dropdown-item">
+					@coffeeType.Type
+				</a>
+			</li>
+		}
+		</ul>
+	</li>

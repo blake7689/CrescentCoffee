@@ -1,0 +1,59 @@
+﻿<div class="my-5">
+	<h3 class="my-4">
+		Search here
+	</h3>
+	<input id="txtCoffeeName" type="text">
+	<button id="searchButton" class="btn btn-secondary">Search</button>
+</div>
+<table id="tblCoffees" cellpadding="0" cellspacing="0">
+	<tbody></tbody>
+</table>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $("tbody").html("");
+        $.ajax({
+            type: "GET",
+            url: "/api/Search",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (coffees) {
+                $.each(coffees, function (i, coffee) {
+                    $("tbody").append($("<tr>"));
+                    appendElement = $("tbody tr").last();
+                    appendElement.append($("<td>").html('<img src=' + coffee.imageThumbnailPath + ' width=250 class="rounded m-2">'));
+                    appendElement.append($("<td>").html('<h2><a href="/coffee/details/' + coffee.coffeeId + '" class="coffee-link">' + coffee.name + '</a></h2>'));
+                });
+            },
+            error: function (xhr, status, error) {
+                    console.log(xhr)
+            }
+        });
+    });
+
+      $("button").click(function(){
+            var searchQuery = $.trim($("#txtCoffeeName").val());
+            $("tbody").html("");
+            $.ajax({
+                type: "POST",
+                url: "/api/Search",
+                data: "\"" + searchQuery + "\"",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (coffees) {
+                    $.each(coffees, function (i, coffee) {
+                        $("tbody").append($("<tr>"));
+                        appendElement = $("tbody tr").last();
+                        appendElement.append($("<td>").html('<img src=' + coffee.imageThumbnailPath + ' width=250 class="rounded m-2">'));
+                        appendElement.append($("<td>").html('<h2><a href="/coffee/details/' + coffee.coffeeId + '" class="coffee-link">' + coffee.name + '</a></h2>'));
+                    });
+                },
+                error: function (xhr, status, error) {
+                        console.log(xhr)
+                }
+            });
+      });
+        
+
+</script>

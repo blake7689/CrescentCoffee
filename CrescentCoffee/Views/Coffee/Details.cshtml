@@ -1,0 +1,31 @@
+﻿@model dynamic
+
+<h3 class="my-5">
+    @Model.Coffee.Name
+</h3>
+
+<div class="row gx-5">
+    <img alt="@Model.Coffee.Name" src="~/@Model.Coffee.ImagePath" class="img-fluid col-5" />
+    <div class="col-7">
+        <h4>@Model.Coffee.ShortDescription</h4>
+        <p>@Model.Coffee.LongDescription</p>
+        <p>Type: @Model.CoffeeType.Type</p>
+        <p>Type Description: @Model.CoffeeType.Description</p>
+        <p>Size: @Model.Coffee.Size</p>
+        <h3 class="pull-right">@Model.Coffee.Price.ToString("c")</h3>
+        <div class="addToCart">
+            @if (Model.Coffee.InStock)
+            {
+                <p class="button">
+                    <a class="btn-secondary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-coffeeId="@Model.Coffee.CoffeeId"> + Add to cart</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Out of Stock :(
+                </p>
+            }
+        </div>
+    </div>
+</div>

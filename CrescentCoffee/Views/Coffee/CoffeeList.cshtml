@@ -1,0 +1,11 @@
+﻿@model CoffeeListViewModel
+
+<h1 class="my-5">
+    @Model.CurrentCoffeeType
+</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach(var coffee in Model.Coffees)
+    {
+        <partial name="_CoffeeCard" model="coffee" />
+    }
+</div>

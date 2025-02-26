@@ -1,0 +1,19 @@
+﻿@model HomeViewModel
+
+<partial name="_Carousel"/>
+
+<div class="text-center">
+    <img src="Images/coffee_logo.png" class="logo-mark mx-auto" />
+    <h1>Coffees of the Week</h1>
+    <h5>Enjoy a weekly selection of our favorite coffees</h5>
+
+    <div class="coffee-of-the-week">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var coffee in Model.CoffeesOfTheWeek)
+            {
+                <partial name="_CoffeeCard" model="coffee"/>
+            }
+        </div>
+
+    </div>
+</div>

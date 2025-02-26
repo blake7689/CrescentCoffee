@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Crescent Coffee</title>
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <base href="/" />
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrap">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+                     aria-label="Crescent Coffee navigation header">
+                    <div class="container-xl">
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                            <img src="images/crescent-logo-white-2.png" width="200" height="51" class="d-inline-block align-top mb-2 mt-1"
+                                 alt="Crescent Coffee Logo">
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <vc:coffee-type-menu></vc:coffee-type-menu>
+                                <li class="nav-item">
+                                    <a asp-controller="About" asp-action="Index" class="nav-link">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Coffee" asp-action="Search">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                            <vc:shopping-cart-summary></vc:shopping-cart-summary>
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        <main>
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+            @* <script src="_framework/blazor.web.js"></script>  *@
+            </main>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container-main">
+            <a class="link footer-left" href="/" style="font-size: 14px">Back to Top</a>
+            <partial name="_Social" />
+        </div>
+        <div class="copyright" style="font-size: 9px">
+            <p style="margin:5px">2025 &copy Crescent Coffee&trade;</p>
+        </div>
+    </footer>
+</body>
+</html>

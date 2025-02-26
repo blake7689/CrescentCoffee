@@ -1,0 +1,54 @@
+﻿@model Coffee
+
+<div class="col">
+    <div class="card coffee-card">
+        <img src="~/@Model.ImageThumbnailPath" class="card-img-top" alt="@Model.Name" style="background-color: #ece0d1">
+        <div class="card-body coffee-button">
+                @if (Model.InStock)
+                {
+                    <h4 class="d-grid">
+                    <button class="btn-link" onclick=AddItem(@Model.CoffeeId)> + Add to cart</button>
+                    </h4>
+                }
+                else
+                {
+                    <h4>
+                        Out of Stock :(
+                    </h4>
+                }
+            
+
+            <div class="d-flex justify-content-between mt-2">
+                <h2 class="text-start">
+                    <a asp-controller="Coffee"
+                    asp-action="Details"
+                    asp-route-id="@Model.CoffeeId"
+                    class="coffee-link">@Model.Name</a>
+                </h2>
+                <h5 class="text-nowrap">
+                    @Model.Price.ToString("c")
+                </h5>
+            </div>
+            <div>
+                <h3 class="text-nowrap">
+                    @Model.Size
+                </h3>
+                <h3 class="text-nowrap">
+                    @ViewBag.Message
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function AddItem(id) {
+        $.ajax({
+            url: '/ShoppingCart/AddToShoppingCart',
+            data: "coffeeId=" + id,
+            success: function() {
+                location.reload();
+            }
+        });
+    }
+</script>
